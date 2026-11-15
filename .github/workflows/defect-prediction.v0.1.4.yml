@@ -34,12 +34,11 @@ jobs:
     timeout-minutes: 180
 
     steps:
-      - name: Checkout main (full history)
-        uses: actions/checkout@v7
-        with:
-          ref: main
-          # Required: the tool walks commit history between the two dates.
-          fetch-depth: 0
+      - name: Checkout default branch (full history)
+          uses: actions/checkout@v7
+          with:
+            ref: ${{ github.event.repository.default_branch }}
+            fetch-depth: 0
 
       - name: Resolve analysis window
         id: window
